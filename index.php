@@ -18,16 +18,16 @@
         array_push($arr_inservices, array($inservice,$status,$httpcode));
     }*/
 
-    $urls = [
+    $sites = [
         'www.wclarke.me',
         #'cdn.wclarke.me',
         'blog.wclarke.me'#,
         #'view.wclarke.me',
         #'staging.wclarke.dev'
     ];
-    $arr_urls = array();
-    foreach ($urls as $url) {
-        $ch = curl_init($url);
+    $arr_sites = array();
+    foreach ($sites as $site) {
+        $ch = curl_init($site);
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_NOBODY, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -38,10 +38,10 @@
         $status = "offline";
         if ($httpcode == 200 || $httpcode == 301) $status = "online";
         #echo json_encode(array('url' => $url,'status' => $status, 'code' => $httpcode));
-        array_push($arr_urls, array($url,$status,$httpcode));
+        array_push($arr_sites, array($site,$status,$httpcode));
     }
     $i = 0;
-    $arrurls_len = count($arr_urls);
+    $sitearr_len = count($arr_sites);
 ?>
 <!doctype html><html lang="en">
     <head>
@@ -84,29 +84,27 @@
 
             <section class="container mx-auto text-el-blue" id="">
                 <h1>test</h1>
-                <?php while ($i < $arrurls_len){
-                    ?><div class="bg-space flex flex-row" id="<?php echo $i."-Sec";?>"><?php
-                        $url = $arr_urls[$i][0];
-                        $status = $arr_urls[$i][1];
+                <?php while ($i < $sitearr_len){
+                    ?><div class="bg-space rounded flex flex-row" id="<?php echo $i."-Sec";?>"><?php
+                        $url = $arr_sites[$i][0];
+                        $status = $arr_sites[$i][1];
                         if($status == 'online'){
                             ?>
-                            <span class="bg-green-500 py-2 px-3 rounded-full m-2"><i class="fa-solid fa-angle-up"></i></span>
+                            <span class="flex justify-center place-self-start m-5 bg-green-500 rounded-full text-center h-5 w-5"><i class="place-self-center fa-solid fa-angle-up"></i></span>
                             <?php
                         } elseif($status == 'offline'){
                             ?>
-                            <span class="bg-red-500 py-2 px-3 rounded-full"><i class="fa-solid fa-angle-down"></i></span>
+                            <span class="flex justify-center place-self-start m-5 bg-red-500 rounded-full text-center h-5 w-5"><i class="fa-solid fa-angle-down"></i></span>
                             <?php
-                        }
-                        ?>
-                        <h3 class="text-el-blue font-semibold text-lg"><a href="<?php echo 'http://'.$url;?>" class="hover:underline" target="_blank"><?php echo $url;?></a><h3>
-                        <?php
-                        /*for ($x = 1; $x < 3; $x++){
+                        } /*elseif($status == 'unknown'){
                             ?>
-                            <span><?php echo $res[$i][$x];?></span>
+                            <span class="bg-zinc-400 py-2 px-3 rounded-full"><i class="fa-solid fa-question"></i></span>
                             <?php
                         }*/
-                    ?></div><?php
-                    ?><br><?php
+                        ?>
+                        <h3 class="my-auto text-el-blue font-semibold text-lg"><a href="<?php echo 'http://'.$url;?>" class="hover:underline" target="_blank"><?php echo $url;?></a><h3>
+                    </div>
+                    <br><?php
                     $i++;
                 }?>
             </section>
