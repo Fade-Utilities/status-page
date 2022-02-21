@@ -166,6 +166,7 @@
                     <?php
         }?>
         var time = 30000
+        console.log(time)
         window.setInterval('refresh()', time); 	
         function refresh() {
             window .location.reload();
