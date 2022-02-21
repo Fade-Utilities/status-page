@@ -20,10 +20,10 @@
 
     $sites = [
         'www.wclarke.me',
-        #'cdn.wclarke.me',
-        'blog.wclarke.me'#,
-        #'view.wclarke.me',
-        #'staging.wclarke.dev'
+        'cdn.wclarke.me',
+        'blog.wclarke.me',
+        'view.wclarke.me',
+        'staging.wclarke.dev'
     ];
     $arr_sites = array();
     foreach ($sites as $site) {
@@ -90,23 +90,25 @@
                         $status = $arr_sites[$i][1];
                         if($status == 'online'){
                             ?>
-                            <span class="flex justify-center place-self-start m-5 bg-green-500 rounded-full text-center h-5 w-5"><i class="place-self-center fa-solid fa-angle-up"></i></span>
+                            <span class="flex justify-center place-self-start m-5 bg-green-600 rounded-full text-center h-5 w-5"><i class="place-self-center fa-solid fa-angle-up"></i></span>
                             <?php
                         } elseif($status == 'offline'){
                             ?>
-                            <span class="flex justify-center place-self-start m-5 bg-red-500 rounded-full text-center h-5 w-5"><i class="fa-solid fa-angle-down"></i></span>
+                            <span class="flex justify-center place-self-start m-5 bg-red-600 rounded-full text-center h-5 w-5"><i class="place-self-center  fa-solid fa-angle-down"></i></span>
                             <?php
-                        } /*elseif($status == 'unknown'){
+                        } elseif($status == 'unknown'){
                             ?>
-                            <span class="bg-zinc-400 py-2 px-3 rounded-full"><i class="fa-solid fa-question"></i></span>
+                            <span class="bg-zinc-400 flex justify-center place-self-start m-5 rounded-full text-center h-5 w-5"><i class="fa-solid fa-question"></i></span>
                             <?php
-                        }*/
+                        }
                         ?>
                         <h3 class="my-auto text-el-blue font-semibold text-lg"><a href="<?php echo 'http://'.$url;?>" class="hover:underline" target="_blank"><?php echo $url;?></a><h3>
                     </div>
                     <br><?php
                     $i++;
                 }?>
+                <span>Site refreshes every 30 seconds to get latest status.</span><br>
+                <button class="mt-2 border-el-blue border px-3 py-2 rounded hover:bg-el-blue hover:text-black font-semibold" onclick="refresh()">Force Refresh</button>
             </section>
 
         </main>
