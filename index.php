@@ -83,7 +83,19 @@
         <main class="bg-deep-space mt-5">
             <h1 class="text-4xl mb-16 text-center mx-auto text-el-blue font-bold">Will's Uptime</h1>
             <section class="container mx-auto text-el-blue" id="personal-sites-sevices">
-                <h1 class="text-2xl mb-5 font-bold">Personal Sites & Services</h1>
+                <div class="container flex flex-row mb-5">
+                    <h1 class="text-2xl mb-5 place-self-start font-bold mx-auto my-auto">Personal Sites & Services</h1>
+                    <div class="object-right place-self-end justify-center mx-auto">
+                            <span class="text-el-blue font-semibold">Change refresh interval: </span><br>
+                            <select id="interval" class="mt-2 hover:cursor-pointer text-el-blue rounded bg-transparent focus:text-black focus:bg-el-blue font-semibold border-el-blue border px-2 py-2 hover:text-black hover:bg-el-blue">
+                                <option class="text-el-blue bg-space" value="10000">10 Seconds</option>
+                                <option class="text-el-blue bg-space" value="20000">20 Seconds</option>
+                                <option class="text-el-blue bg-space" selected value="30000">30 Seconds</option>
+                                <option class="text-el-blue bg-space" value="45000">45 Seconds</option>
+                                <option class="text-el-blue bg-space" value="60000">1 Minute</option>
+                            </select>
+                    </div>
+                </div>
                 <?php while ($i < $sitearr_len){
                     ?><div class="bg-space rounded flex flex-row" id="<?php echo $i."-Sec";?>"><?php
                         $url = $arr_sites[$i][0];
@@ -107,7 +119,7 @@
                     <br><?php
                     $i++;
                 }?>
-                <span>Site refreshes every 30 seconds to get latest status.</span><br>
+                <span>Site refreshes every 30 seconds by default to get latest status.</span><br>
                 <button class="mt-2 border-el-blue border px-3 py-2 rounded hover:bg-el-blue hover:text-black font-semibold" onclick="refresh()">Force Refresh</button>
             </section>
 
@@ -116,7 +128,12 @@
     </body>
 
     <script>
-        window.setInterval('refresh()', 30000); 	
+        var getInterval = document.getElementById("interval")
+        var interval = getInterval.options[getInterval.selectedIndex].value
+        if (interval != 30000){time = interval}
+        console.log(interval)
+        var time = 30000
+        window.setInterval('refresh()', time); 	
         function refresh() {
             window .location.reload();
         }
