@@ -77,13 +77,13 @@
             }
         </script>
     </head>
-    <body>
+    <body class="bg-deep-space">
         <nav class="bg-deep-space">
         </nav>
-        <main class="bg-deep-space">
-
-            <section class="container mx-auto text-el-blue" id="">
-                <h1>test</h1>
+        <main class="bg-deep-space mt-64">
+            <h1 class="text-4xl mb-16 text-center mx-auto text-el-blue font-bold">Will's Uptime</h1>
+            <section class="container mx-auto text-el-blue" id="personal-sites-sevices">
+                <h1 class="text-2xl mb-5 font-bold">Personal Sites & Services</h1>
                 <?php while ($i < $sitearr_len){
                     ?><div class="bg-space rounded flex flex-row" id="<?php echo $i."-Sec";?>"><?php
                         $url = $arr_sites[$i][0];
