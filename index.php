@@ -80,7 +80,7 @@
     <body class="bg-deep-space">
         <nav class="bg-deep-space">
         </nav>
-        <main class="bg-deep-space mt-64">
+        <main class="bg-deep-space mt-5">
             <h1 class="text-4xl mb-16 text-center mx-auto text-el-blue font-bold">Will's Uptime</h1>
             <section class="container mx-auto text-el-blue" id="personal-sites-sevices">
                 <h1 class="text-2xl mb-5 font-bold">Personal Sites & Services</h1>
