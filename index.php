@@ -158,12 +158,12 @@
 
     <script>
         <?php if($browser == 'Mozilla Firefox'){
-                    ?>
-                    var getInterval = document.getElementById("interval")
-                    var interval = getInterval.options[getInterval.selectedIndex].value
-                    if (interval != 30000){time = interval}
-                    console.log(interval)
-                    <?php
+            ?>
+            var getInterval = document.getElementById("interval")
+            var interval = getInterval.options[getInterval.selectedIndex].value
+            if (interval != 30000){time = interval}
+            console.log(interval)
+            <?php
         }?>
         var time = 30000
         console.log(time)
