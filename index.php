@@ -88,7 +88,7 @@
                         return 'Other';
                 }
                 $browser = browserdata();
-                if ($browser == 'Mozilla Firefox'){
+                if ($browser == 'Mozilla Firefox' && !isMobile()){
                     ?>
                     <div class="flex flex-row mb-5 justify-between w-full">
                         <h1 class="text-2xl mb-5 place-self-start font-bold mx-auto my-auto">Personal Sites & Services</h1>
@@ -145,7 +145,7 @@
     <script>
         <?php
         //Temp browser blocking
-        if($browser == 'Mozilla Firefox'){
+        if($browser == 'Mozilla Firefox' && !isMobile()){
             ?>
             var getInterval = document.getElementById("interval")
             var interval = getInterval.options[getInterval.selectedIndex].value
