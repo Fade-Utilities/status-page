@@ -4,3 +4,5 @@ To do:
 - Introduce server status
 - Historic/average uptime 
 - Server/site overview
+
+- less refresh on mobile or slow devices (??)
