@@ -5,4 +5,4 @@ To do:
 - Historic/average uptime 
 - Server/site overview
 
-- less refresh on mobile or slow devices (??)
+- less refresh on mobile or slow devices (??)--COMPLETED
