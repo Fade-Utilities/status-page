@@ -1,28 +1,9 @@
 <?php
-    /*$inservices = [
-        'staging.wclarke.dev'
-    ];
-    $arr_inservices = array();
-    foreach($inservices as $inservice){
-        $cht = curl_init($inservice);
-        curl_setopt($cht, CURLOPT_HEADER, true);
-        curl_setopt($cht, CURLOPT_NOBODY, true);
-        curl_setopt($cht, CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($cht, CURLOPT_TIMEOUT,10);
-        $output = curl_exec($cht);
-        $httpcode = curl_getinfo($cht, CURLINFO_HTTP_CODE);
-        curl_close($cht);
-        $status = "offline";
-        if ($httpcode == 200 || $httpcode == 301) $status = "online";
-        #echo json_encode(array('url' => $url,'status' => $status, 'code' => $httpcode));
-        array_push($arr_inservices, array($inservice,$status,$httpcode));
-    }*/
-
     $sites = [
         'www.wclarke.me',
         'cdn.wclarke.me',
         'blog.wclarke.me',
-        'view.wclarke.me',
+        'view.wclarke.dev',
         'staging.wclarke.dev'
     ];
     $arr_sites = array();
@@ -84,6 +65,7 @@
             <h1 class="text-4xl mb-16 text-center mx-auto text-el-blue font-bold">Will's Uptime</h1>
             <section class="container mx-auto text-el-blue" id="personal-sites-sevices">
                 <?php
+                //Temporary browser blocking
                 function browserdata(){
                     if(strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)
                         return 'Internet explorer';
@@ -103,8 +85,7 @@
                         return 'Other';
                 }
                 $browser = browserdata();
-                $true = true;
-                if ($browser == 'Mozilla Firefox' /*$true*/){
+                if ($browser == 'Mozilla Firefox'){
                     ?>
                     <div class="flex flex-row mb-5 justify-between w-full">
                         <h1 class="text-2xl mb-5 place-self-start font-bold mx-auto my-auto">Personal Sites & Services</h1>
@@ -157,7 +138,12 @@
     </body>
 
     <script>
-        <?php if($browser == 'Mozilla Firefox'){
+        <?php
+        function isMobile() {
+            return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+        }
+        //Temp browser blocking
+        if($browser == 'Mozilla Firefox'){
             ?>
             var getInterval = document.getElementById("interval")
             var interval = getInterval.options[getInterval.selectedIndex].value
@@ -166,6 +152,7 @@
             <?php
         }?>
         var time = 30000
+        <?php if (isMobile()){?> time = 100000 <?php }?>
         console.log(time)
         window.setInterval('refresh()', time); 	
         function refresh() {
