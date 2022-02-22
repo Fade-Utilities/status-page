@@ -1,4 +1,7 @@
 <?php
+    function isMobile() {
+        return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+    }   
     $sites = [
         'www.wclarke.me',
         'cdn.wclarke.me',
@@ -129,7 +132,9 @@
                     <br><?php
                     $i++;
                 }?>
-                <span>Site refreshes every 30 seconds by default to get latest status.</span><br>
+                
+                <?php if (!isMobile()) echo '<span>Site refreshes every 30 seconds by default to get latest status.</span><br>';
+                else echo '<span>Site refreshes every minute by default to get latest status.</span><br>';?>
                 <button class="mt-2 border-el-blue border px-3 py-2 rounded hover:bg-el-blue hover:text-black font-semibold" onclick="refresh()">Force Refresh</button>
             </section>
 
@@ -139,9 +144,6 @@
 
     <script>
         <?php
-        function isMobile() {
-            return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-        }
         //Temp browser blocking
         if($browser == 'Mozilla Firefox'){
             ?>
@@ -152,7 +154,7 @@
             <?php
         }?>
         var time = 30000
-        <?php if (isMobile()){?> time = 100000 <?php }?>
+        <?php if (isMobile()) echo 'time = 10000' ?>
         console.log(time)
         window.setInterval('refresh()', time); 	
         function refresh() {
