@@ -127,7 +127,7 @@
                     $i++;
                 }?>
                 
-                <?php if (!isMobile()) echo '<span class="text-xl">Site refreshes every 30 seconds by default to get latest status.</span><br>';
+                <?php if (!isMobile()) echo '<span class="text-xl">Site refreshes every minute by default to get latest status.</span><br>';
                 else echo '<span  class="text-xl">Site refreshes every minute by default to get latest status.</span><br>';?>
                 <button class="mt-2 border-el-blue border px-3 py-2 rounded hover:bg-el-blue hover:text-black font-semibold" onclick="refresh()">Force Refresh</button>
             </section>
