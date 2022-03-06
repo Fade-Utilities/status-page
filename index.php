@@ -137,18 +137,7 @@
     </body>
 
     <script>
-        <?php
-        //Temp browser blocking
-        if($browser == 'Mozilla Firefox' && !isMobile()){
-            ?>
-            var getInterval = document.getElementById("interval")
-            var interval = getInterval.options[getInterval.selectedIndex].value
-            if (interval != 30000){time = interval}
-            console.log(interval)
-            <?php
-        }?>
-        var time = 30000
-        <?php if (isMobile()) echo 'time = 10000' ?>
+        var time = 10000
         console.log(time)
         window.setInterval('refresh()', time); 	
         function refresh() {
