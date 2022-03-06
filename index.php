@@ -137,7 +137,7 @@
     </body>
 
     <script>
-        var time = 10000
+        var time = 60000
         console.log(time)
         window.setInterval('refresh()', time); 	
         function refresh() {
