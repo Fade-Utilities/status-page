@@ -4,7 +4,7 @@
     }   
     $sites = [
         'www.wclarke.me',
-        'cdn.wclarke.me',
+        'https://cdn.wclarke.me',
         'blog.wclarke.me',
         'view.wclarke.dev',
         'staging.wclarke.dev'
@@ -88,27 +88,21 @@
                         return 'Other';
                 }
                 $browser = browserdata();
-                if ($browser == 'Mozilla Firefox' && !isMobile()){
-                    ?>
-                    <div class="flex flex-row mb-5 justify-between w-full">
-                        <h1 class="text-2xl mb-5 place-self-start font-bold mx-auto my-auto">Personal Sites & Services</h1>
-                        <div class="object-right place-self-end justify-center mx-auto">
+                ?>
+                        <div class="mb-3">
+                            <h1 class="text-el-blue font-semibold text-2xl">Personal Sites & Services</h1>
+                            <!--<div class="mb-4">
                                 <span class="text-el-blue font-semibold">Change refresh interval: </span><br>
                                 <select id="interval" class="mt-2 hover:cursor-pointer text-el-blue rounded bg-transparent focus:text-black focus:bg-el-blue font-semibold border-el-blue border px-2 py-2 hover:text-black hover:bg-el-blue">
                                     <option class="text-el-blue bg-space" value="10000">10 Seconds</option>
                                     <option class="text-el-blue bg-space" value="20000">20 Seconds</option>
-                                    <option class="text-el-blue bg-space"  value="30000">30 Seconds</option>
+                                    <option class="text-el-blue bg-space" selected value="30000">30 Seconds</option>
                                     <option class="text-el-blue bg-space" value="45000">45 Seconds</option>
                                     <option class="text-el-blue bg-space" value="60000">1 Minute</option>
                                 </select>
+                            </div>-->
                         </div>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <h1 class="text-2xl mb-5 font-bold">Personal Sites & Services</h1>
-                    <?php
-                }
+                <?php
                 while ($i < $sitearr_len){
                     ?><div class="bg-space rounded flex flex-row" id="<?php echo $i."-Sec";?>"><?php
                         $url = $arr_sites[$i][0];
@@ -133,8 +127,8 @@
                     $i++;
                 }?>
                 
-                <?php if (!isMobile()) echo '<span>Site refreshes every 30 seconds by default to get latest status.</span><br>';
-                else echo '<span>Site refreshes every minute by default to get latest status.</span><br>';?>
+                <?php if (!isMobile()) echo '<span class="text-xl">Site refreshes every 30 seconds by default to get latest status.</span><br>';
+                else echo '<span  class="text-xl">Site refreshes every minute by default to get latest status.</span><br>';?>
                 <button class="mt-2 border-el-blue border px-3 py-2 rounded hover:bg-el-blue hover:text-black font-semibold" onclick="refresh()">Force Refresh</button>
             </section>
 
