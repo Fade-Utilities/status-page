@@ -1,2 +1,0 @@
-<?php
-// Server / site overview
