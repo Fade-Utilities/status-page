@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Status page - status.wclarke.dev</title>
+        <meta name="title" content="Status page - status.wclarke.dev">
+        <meta name="description" content="View the status of my websites, internal systems and servers all from the same place!">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://status.wclarke.dev">
+        <meta property="og:title" content="Status page - status.wclarke.dev">
+        <meta property="og:description" content="View the status of my websites, internal systems and servers all from the same place!">
+        <!--<meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">-->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://status.wclarke.dev">
+        <meta property="twitter:title" content="Status page - status.wclarke.dev">
+        <meta property="twitter:description" content="View the status of my websites, internal systems and servers all from the same place!">
+        <!--<meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">-->
+        <script src="https://kit.fontawesome.com/505b8db572.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+        <script>
+            tailwind.config = {
+                theme :{
+                    extend:{
+                        colors:{
+                            'deep-space':'#171819',
+                            'l-deep-space':'#282a2b',
+                            'space':'#272728',
+                            'el-blue':'#C1EEFD'
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body class="flex flex-col h-screen justify-between bg-deep-space">
+        <header id="header" class="heading-section h-10">
+            <div class="text-center font-semibold text-el-blue pt-1" id="header-text">status.wclarke.dev</div>
+            <div aria-hidden="true" x-data="{ menu: false }" class="relative right-0 top-0">
+                <button @click="menu = !menu" class="z-20 rounded fixed right-2 top-2 px-2 py-2 bg-space md:hover:bg-l-deep-space  transform duration-500 ease-in-out md:hover:scale-110 motion-reduce:transform-none text-white m-2 focus:outline-none" >
+                    <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path x-show="!menu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                        <path x-show="menu"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+	            </button>
+	            <ul
+                x-show.transition.duration.500ms="menu"
+                @click.away="menu = false"
+                class="flex flex-row w-full h-full bg-deep-space text-el-blue z-10 fixed sm:px-3 sm:py-2  md:px-8 md:py-4 overflow-y-auto " style="display: none;">
+                    <!-- TODO: Finish nav, make center (?), add info/links -->
+                    <div class="m-10" id="nav-group-1">
+                        <h3 class="text-xl py-1 font-semibold">Useful Links</h3>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">1</a></li>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">2</a></li>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">3</a></li>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">4</a></li>
+                    </div>
+                    <div class="m-10" id="nav-group-2">
+                        <h3 class="text-xl py-1 font-semibold">Information</h3>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">1</a></li>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">2</a></li>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">3</a></li>
+                        <li class="text-lg py-1"><a href="#" class="px-2 hover:text-gray-200 hover:underline">4</a></li>
+                    </div>
+                </ul>
+            </div>
+        </header>
+        <main id="main-body" class="main-section mb-auto h-10 bg-green-500">
